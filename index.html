@@ -74,6 +74,21 @@
             border-radius: 10px;
             text-align: center;
         }
+        @keyframes rainbow {
+            0% { color: red; }
+            14% { color: orange; }
+            28% { color: yellow; }
+            42% { color: green; }
+            57% { color: blue; }
+            71% { color: indigo; }
+            85% { color: violet; }
+            100% { color: red; }
+        }
+        .rainbow-text {
+            font-size: 2em;
+            font-weight: bold;
+            animation: rainbow 3s linear infinite;
+        }
     </style>
     <script>
         function toggleContent(id) {
@@ -91,8 +106,7 @@
     </script>
 </head>
 <body>
-    <h1>MENU</h1>
-    <p>The Battle Cat - vu sad idol</p>
+    <h1 class="rainbow-text">MENU SHOP VU SAD IDOL</h1>
     <div class="menu-container">
         <div class="menu-item" onclick="toggleContent('combo')">COMBO</div>
         <div class="menu-item" onclick="toggleContent('price-list')">BÁN LẺ</div>
@@ -102,26 +116,26 @@
         <h2>COMBO</h2>
         <div class="combo-container">
             <div class="combo-box">
-                <h3>COMBO 50K</h3>
+                <h3 class="rainbow-text">COMBO 50K</h3>
                 <ul>
-                    <li>135k catfood mua nhiều được bonus</li>
-                    <li>2k vé bạc + 300 vé vàng</li>
-                    <li>99m exp + 9999np</li>
-                    <li>27 vé platinum + 12 vé legend</li>
-                    <li>1000 battle item</li>
-                    <li>500 cat eye + 1000 cỏ + 4 unit tự chọn</li>
+                    <h3>135k catfood mua nhiều được bonus</h3>
+                    <h3>2k vé bạc + 300 vé vàng</h3>
+                    <h3>99m exp + 9999np</h3>
+                    <h3>27 vé platinum + 12 vé legend</h3>
+                    <h3>1000 battle item</h3>
+                    <h3>500 cat eye + 1000 cỏ + 4 unit tự chọn</h3>
                 </ul>
                 <button class="buy-button">Mua ngay</button>
             </div>
             <div class="combo-box">
-                <h3>COMBO 20K</h3>
+                <h3 class="rainbow-text">COMBO 20K</h3>
                 <ul>
-                    <li>80k catfood</li>
-                    <li>1k vé bạc + 150 vé vàng</li>
-                    <li>50m exp + 5000np</li>
-                    <li>10 vé platinum + 5 vé legend</li>
-                    <li>500 battle item</li>
-                    <li>250 cat eye + 500 cỏ + 2 unit tự chọn</li>
+                    <h3>80k catfood</h3>
+                    <h3>1k vé bạc + 150 vé vàng</h3>
+                    <h3>50m exp + 5000np</h3>
+                    <h3>10 vé platinum + 5 vé legend</h3>
+                    <h3>500 battle item</h3>
+                    <h3>250 cat eye + 500 cỏ + 2 unit tự chọn</h3>
                 </ul>
                 <button class="buy-button">Mua ngay</button>
             </div>
@@ -129,38 +143,38 @@
     </div>
     <div id="price-list" class="menu-content">
         <h2>BẢNG BÁN LẺ ĐỒNG GIÁ 10K</h2>
-        <div class="retail-item">
-            <h3>99M XP</h3>
-            <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
+            <div class="retail-item">
+                <h3>99M XP</h3>
+                <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
         </div>
-        <div class="retail-item">
-            <h3>9999 NP</h3>
-            <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
-        </div>
-        <div class="retail-item">
-            <h3>1 Cat tự chọn</h3>
-            <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
-        </div>
-        <div class="retail-item">
-            <h3>35K Catfood</h3>
-            <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
-        </div>
-        <div class="retail-item">
-            <h3>9 Vé Platinum</h3>
-            <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
-        </div>
-        <div class="retail-item">
-            <h3>4 Vé Legend</h3>
-            <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
-        </div>
-        <div class="retail-item">
-            <h3>Max Level Gamatoto</h3>
-            <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
+            <div class="retail-item">
+                <h3>9999 NP</h3>
+                <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
+            </div>
+            <div class="retail-item">
+                <h3>1 Cat tự chọn</h3>
+                <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
+            </div>
+            <div class="retail-item">
+                <h3>35K Catfood</h3>
+                <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
+            </div>
+            <div class="retail-item">
+                <h3>9 Vé Platinum</h3>
+                <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
+            </div>
+            <div class="retail-item">
+                <h3>4 Vé Legend</h3>
+                <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
+            </div>
+            <div class="retail-item">
+                <h3>Max Level Gamatoto</h3>
+                <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
         </div>
     </div>
     <div id="bank-info" class="menu-content">
         <h2>BANK MB - 0777887962 <br> CARD - VIETTEL</h2>
-        <a href="https://i.ibb.co/tW0ntrf/qr.jpg"><img src="https://i.ibb.co/xRnw0Tv/qr.jpg" alt="qr" border="5" /></a>
+        <a href="https://i.ibb.co/tW0ntrf/qr.jpg"><img src="https://i.ibb.co/xRnw0Tv/qr.jpg" alt="qr" border="0"/></a>
     </div>
 </body>
 </html>
