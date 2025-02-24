@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu The Battle Cat - VU SAID IDOL</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a1e2d;
+            color: white;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        .menu-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .menu-item {
+            width: 200px;
+            height: 100px;
+            background: linear-gradient(45deg, #ffcc00, #ff6600);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .menu-item:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 15px rgba(255, 204, 0, 0.7);
+        }
+        .menu-content {
+            display: none;
+            background-color: #333a52;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 10px;
+            text-align: left;
+        }
+        .combo-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        .combo-box {
+            width: 48%;
+            background-color: #46506e;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .buy-button {
+            display: block;
+            margin: 10px auto;
+            padding: 10px 20px;
+            background: linear-gradient(45deg, #ffcc00, #ff6600);
+            border: none;
+            color: black;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .retail-item {
+            background-color: #46506e;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 10px;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById(id);
+            var allContents = document.querySelectorAll('.menu-content');
+            
+            allContents.forEach(item => {
+                if (item.id !== id) {
+                    item.style.display = 'none';
+                }
+            });
+            
+            content.style.display = (content.style.display === 'block') ? 'none' : 'block';
+        }
+    </script>
+</head>
+<body>
+    <h1>MENU</h1>
+    <p>The Battle Cat - vu sad idol</p>
+    <div class="menu-container">
+        <div class="menu-item" onclick="toggleContent('combo')">COMBO</div>
+        <div class="menu-item" onclick="toggleContent('price-list')">BÁN LẺ</div>
+        <div class="menu-item" onclick="toggleContent('bank-info')">BANK</div>
+    </div>
+    <div id="combo" class="menu-content">
+        <h2>COMBO</h2>
+        <div class="combo-container">
+            <div class="combo-box">
+                <h3>COMBO 50K</h3>
+                <ul>
+                    <li>135k catfood mua nhiều được bonus</li>
+                    <li>2k vé bạc + 300 vé vàng</li>
+                    <li>99m exp + 9999np</li>
+                    <li>27 vé platinum + 12 vé legend</li>
+                    <li>1000 battle item</li>
+                    <li>500 cat eye + 1000 cỏ + 4 unit tự chọn</li>
+                </ul>
+                <button class="buy-button">Mua ngay</button>
+            </div>
+            <div class="combo-box">
+                <h3>COMBO 20K</h3>
+                <ul>
+                    <li>80k catfood</li>
+                    <li>1k vé bạc + 150 vé vàng</li>
+                    <li>50m exp + 5000np</li>
+                    <li>10 vé platinum + 5 vé legend</li>
+                    <li>500 battle item</li>
+                    <li>250 cat eye + 500 cỏ + 2 unit tự chọn</li>
+                </ul>
+                <button class="buy-button">Mua ngay</button>
+            </div>
+        </div>
+    </div>
+    <div id="price-list" class="menu-content">
+        <h2>BẢNG BÁN LẺ ĐỒNG GIÁ 10K</h2>
+        <div class="retail-item">
+            <h3>99M XP</h3>
+            <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
+        </div>
+        <div class="retail-item">
+            <h3>9999 NP</h3>
+            <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
+        </div>
+        <div class="retail-item">
+            <h3>1 Cat tự chọn</h3>
+            <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
+        </div>
+        <div class="retail-item">
+            <h3>35K Catfood</h3>
+            <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
+        </div>
+        <div class="retail-item">
+            <h3>9 Vé Platinum</h3>
+            <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
+        </div>
+        <div class="retail-item">
+            <h3>4 Vé Legend</h3>
+            <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
+        </div>
+        <div class="retail-item">
+            <h3>Max Level Gamatoto</h3>
+            <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
+        </div>
+    </div>
+    <div id="bank-info" class="menu-content">
+        <h2>BANK</h2>
+        <a href="https://i.ibb.co/tW0ntrf/qr.jpg"><img src="https://i.ibb.co/xRnw0Tv/qr.jpg" alt="qr" border="5" /></a>
+        <h2>CARD</h2>
+        <p>VIETTEL</p>
+    </div>
+</body>
+</html>
