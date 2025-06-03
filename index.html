@@ -1,182 +1,298 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menu The Battle Cat - VU SAID IDOL</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #1a1e2d;
-            color: white;
-            text-align: center;
-            margin: 0;
-            padding: 20px;
-        }
-        .menu-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .menu-item {
-            width: 200px;
-            height: 100px;
-            background: linear-gradient(45deg, #ffcc00, #ff6600);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            font-weight: bold;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .menu-item:hover {
-            transform: scale(1.1);
-            box-shadow: 0px 0px 15px rgba(255, 204, 0, 0.7);
-        }
-        .menu-content {
-            display: none;
-            background-color: #333a52;
-            padding: 15px;
-            margin-top: 10px;
-            border-radius: 10px;
-            text-align: left;
-        }
-        .combo-container {
-            display: flex;
-            justify-content: space-between;
-            gap: 20px;
-        }
-        .combo-box {
-            width: 48%;
-            background-color: #46506e;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        .buy-button {
-            display: block;
-            margin: 10px auto;
-            padding: 10px 20px;
-            background: linear-gradient(45deg, #ffcc00, #ff6600);
-            border: none;
-            color: black;
-            font-weight: bold;
-            border-radius: 5px;
-            cursor: pointer;
-            text-decoration: none;
-        }
-        .retail-item {
-            background-color: #46506e;
-            padding: 10px;
-            margin: 10px 0;
-            border-radius: 10px;
-            text-align: center;
-        }
-        @keyframes rainbow {
-            0% { color: red; }
-            14% { color: orange; }
-            28% { color: yellow; }
-            42% { color: green; }
-            57% { color: blue; }
-            71% { color: indigo; }
-            85% { color: violet; }
-            100% { color: red; }
-        }
-        .rainbow-text {
-            font-size: 2em;
-            font-weight: bold;
-            animation: rainbow 3s linear infinite;
-        }
-    </style>
-    <script>
-        function toggleContent(id) {
-            var content = document.getElementById(id);
-            var allContents = document.querySelectorAll('.menu-content');
-            
-            allContents.forEach(item => {
-                if (item.id !== id) {
-                    item.style.display = 'none';
-                }
-            });
-            
-            content.style.display = (content.style.display === 'block') ? 'none' : 'block';
-        }
-    </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HP Game</title>
+  <style>
+    /* Nền tối sang trọng */
+    body {
+      background: linear-gradient(135deg, #0f0f13, #1a1a24);
+      color: #e0e7ff;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      overflow: hidden;
+      min-height: 100vh;
+      margin: 0;
+      padding: 20px;
+      user-select: none;
+    }
+    .player {
+      position: absolute;
+      width: 220px;
+      padding: 20px;
+      background: rgba(20, 20, 35, 0.85);
+      border: 2px solid #39ff14;
+      border-radius: 12px;
+      text-align: center;
+      font-size: 1.4rem;
+      box-shadow: 0 0 12px #39ff14aa;
+      transition: background-color 0.3s ease;
+    }
+    .player:hover {
+      background: rgba(30, 30, 50, 0.95);
+      box-shadow: 0 0 18px #39ff14cc;
+    }
+    .hp-bar {
+      margin-top: 8px;
+      color: #ff5555;
+      font-weight: 700;
+      letter-spacing: 1px;
+      user-select: text;
+    }
+    .corner-0 { top: 10px; left: 10px; }
+    .corner-1 { top: 10px; right: 10px; }
+    .corner-2 { bottom: 10px; left: 10px; }
+    .corner-3 { bottom: 10px; right: 10px; }
+    #controls {
+      margin-top: 120px;
+      text-align: center;
+      z-index: 2;
+    }
+    #results {
+      margin-top: 20px;
+      z-index: 2;
+      font-size: 2.8rem;
+      color: #39ff14;
+      letter-spacing: 6px;
+      user-select: none;
+      min-height: 50px;
+    }
+    #results span {
+      cursor: pointer;
+      padding: 0 4px;
+      transition: transform 0.15s ease;
+      user-select: none;
+    }
+    #results span:hover {
+      transform: scale(1.2);
+      text-shadow: 0 0 8px #39ff14;
+    }
+    .cards span {
+      margin: 6px;
+      cursor: pointer;
+      font-size: 1.8rem;
+      user-select: none;
+      transition: transform 0.15s ease;
+    }
+    .cards span:hover {
+      transform: scale(1.3);
+      text-shadow: 0 0 6px #39ff14;
+    }
+    button.damage-btn {
+      background-color: #ff4444;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 12px;
+      cursor: pointer;
+      margin-left: 5px;
+      font-weight: 700;
+      transition: background-color 0.25s ease;
+      user-select: none;
+    }
+    button.damage-btn:hover {
+      background-color: #ff2222;
+    }
+    button {
+      font-size: 2rem;
+      padding: 14px 32px;
+      margin: 8px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(45deg, #0ff, #008080);
+      color: #001a1a;
+      cursor: pointer;
+      font-weight: 700;
+      box-shadow: 0 0 10px #0ff7;
+      user-select: none;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+    button:hover {
+      background: linear-gradient(45deg, #0cc, #005050);
+      color: #c0fff0;
+      box-shadow: 0 0 14px #0cff;
+    }
+    #overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background-color: rgba(5, 5, 10, 0.95);
+      color: #aaffcc;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      user-select: none;
+      padding: 20px;
+    }
+    #nameInputs input {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 2px solid #39ff14;
+      background: #111;
+      color: #aaffcc;
+      width: 220px;
+      text-align: center;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+    #nameInputs input:focus {
+      border-color: #0ff;
+      background: #001a1a;
+      color: #ccffee;
+    }
+  </style>
 </head>
 <body>
-    <h1 class="rainbow-text">MENU SHOP VU SAD IDOL</h1>
-    <div class="menu-container">
-        <div class="menu-item" onclick="toggleContent('combo')">COMBO</div>
-        <div class="menu-item" onclick="toggleContent('price-list')">BÁN LẺ</div>
-        <div class="menu-item" onclick="toggleContent('bank-info')">BANK</div>
-    </div>
-    <div id="combo" class="menu-content">
-        <h2>COMBO</h2>
-        <div class="combo-container">
-            <div class="combo-box">
-                <h3 class="rainbow-text">COMBO 50K</h3>
-                <ul>
-                    <h3>135k catfood mua nhiều được bonus</h3>
-                    <h3>2k vé bạc + 300 vé vàng</h3>
-                    <h3>99m exp + 9999np</h3>
-                    <h3>27 vé platinum + 12 vé legend</h3>
-                    <h3>1000 battle item</h3>
-                    <h3>500 cat eye + 1000 cỏ + 4 unit tự chọn</h3>
-                </ul>
-                <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
-        
-            </div>
-            <div class="combo-box">
-                <h3 class="rainbow-text">COMBO 20K</h3>
-                <ul>
-                    <h3>80k catfood</h3>
-                    <h3>1k vé bạc + 150 vé vàng</h3>
-                    <h3>50m exp + 5000np</h3>
-                    <h3>10 vé platinum + 5 vé legend</h3>
-                    <h3>500 battle item</h3>
-                    <h3>250 cat eye + 500 cỏ + 2 unit tự chọn</h3>
-                </ul>
-                <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
-        
-            </div>
-        </div>
-    </div>
-    <div id="price-list" class="menu-content">
-        <h2>BẢNG BÁN LẺ ĐỒNG GIÁ 10K</h2>
-            <div class="retail-item">
-                <h3>99M XP</h3>
-                <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
-        </div>
-            <div class="retail-item">
-                <h3>9999 NP</h3>
-                <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
-            </div>
-            <div class="retail-item">
-                <h3>1 Cat tự chọn</h3>
-                <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
-            </div>
-            <div class="retail-item">
-                <h3>35K Catfood</h3>
-                <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
-            </div>
-            <div class="retail-item">
-                <h3>9 Vé Platinum</h3>
-                <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
-            </div>
-            <div class="retail-item">
-                <h3>4 Vé Legend</h3>
-                <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
-            </div>
-            <div class="retail-item">
-                <h3>Max Level Gamatoto</h3>
-                <a href="https://www.facebook.com/profile.php?id=100092664068943" class="buy-button">Mua ngay</a>
-        </div>
-    </div>
-    <div id="bank-info" class="menu-content">
-        <h2>BANK MB - 0777887962 <br> CARD - VIETTEL</h2>
-        <a href="https://i.ibb.co/tW0ntrf/qr.jpg"><img src="https://i.ibb.co/xRnw0Tv/qr.jpg" alt="qr" border="0"/></a>
-    </div>
+  <div id="overlay">
+    <label>Chọn số người chơi:</label><br />
+    <label><input type="radio" name="numPlayers" value="2" onchange="confirmNumPlayers()"> 2</label>
+    <label><input type="radio" name="numPlayers" value="3" onchange="confirmNumPlayers()"> 3</label>
+    <label><input type="radio" name="numPlayers" value="4" onchange="confirmNumPlayers()"> 4</label>
+    <div id="nameInputs"></div>
+    <button onclick="startGame()" style="display:none;">Bắt đầu trò chơi</button>
+  </div>
+
+  <div id="controls">
+    <button onclick="rollBullet()">Roll 💣</button>
+    <button onclick="drawCards()">Card 🎴</button>
+  </div>
+  <div id="results" aria-live="polite" aria-atomic="true"></div>
+  <div id="game"></div>
+
+  <script>
+    const cardIcons = ['🪚','💉','🚫','🕵️'];
+    let players = [];
+
+    function confirmNumPlayers() {
+      const radios = document.getElementsByName('numPlayers');
+      let num = 0;
+      for (const r of radios) {
+        if (r.checked) {
+          num = parseInt(r.value);
+          break;
+        }
+      }
+      if (num < 2 || num > 4) return;
+
+      const nameInputs = document.getElementById('nameInputs');
+      nameInputs.innerHTML = '';
+      for (let i = 0; i < num; i++) {
+        const input = document.createElement('input');
+        input.placeholder = `Tên người chơi ${i + 1}`;
+        input.id = `name${i}`;
+        input.autocomplete = "off";
+        nameInputs.appendChild(input);
+      }
+      document.querySelector('#overlay button').style.display = 'inline-block';
+    }
+
+    function startGame() {
+      document.getElementById('game').innerHTML = '';
+      players = [];
+      const radios = document.getElementsByName('numPlayers');
+      let num = 0;
+      for (const r of radios) {
+        if (r.checked) {
+          num = parseInt(r.value);
+          break;
+        }
+      }
+      if (num < 2 || num > 4) return;
+
+      for (let i = 0; i < num; i++) {
+        const name = document.getElementById(`name${i}`).value.trim() || `Player ${i + 1}`;
+        const player = {
+          hp: 5,
+          cards: [],
+          name,
+          element: document.createElement('div')
+        };
+        player.element.className = `player corner-${i}`;
+        players.push(player);
+        updatePlayerDisplay(player, i);
+        document.getElementById('game').appendChild(player.element);
+      }
+      document.getElementById('overlay').style.display = 'none';
+    }
+
+    function updatePlayerDisplay(player, index) {
+      const cardDisplay = player.cards.map((c, i) => `<span onclick="useCard(${index}, ${i})" title="Dùng thẻ ${c}">${c}</span>`).join(' ');
+      const hpText = player.hp > 0 ? `${player.hp}/5` : '💀 Died';
+      player.element.innerHTML = `
+        <div>${player.name}</div>
+        <div class="cards">${cardDisplay}</div>
+        <div class="hp-bar">HP: ${hpText} <button class="damage-btn" onclick="damagePlayer(${index})">-1</button></div>
+      `;
+    }
+
+    function useCard(playerIdx, cardIdx) {
+      if (!players[playerIdx]) return;
+      players[playerIdx].cards.splice(cardIdx, 1);
+      updatePlayerDisplay(players[playerIdx], playerIdx);
+    }
+
+    function damagePlayer(index) {
+      if (players[index] && players[index].hp > 0) {
+        players[index].hp--;
+        updatePlayerDisplay(players[index], index);
+      }
+    }
+
+    // Roll bomb: tạo 8 icon gồm số 💣 từ 1-7 ngẫu nhiên, phần còn lại là ❌
+    function rollBullet() {
+      const results = document.getElementById('results');
+      results.innerHTML = '';
+
+      // Random số bom từ 1 đến 7
+      const bombCount = Math.floor(Math.random() * 7) + 1;
+      const crossCount = 8 - bombCount;
+
+      // Tạo mảng gồm bombCount quả bom và crossCount dấu ❌
+      const icons = [];
+      for (let i = 0; i < bombCount; i++) {
+        icons.push('💣');
+      }
+      for (let i = 0; i < crossCount; i++) {
+        icons.push('❌');
+      }
+
+      // Trộn ngẫu nhiên mảng icons để không bị theo thứ tự
+      for (let i = icons.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [icons[i], icons[j]] = [icons[j], icons[i]];
+      }
+
+      // Tạo phần tử span cho từng icon, bấm sẽ ẩn icon đó
+      icons.forEach(icon => {
+        const span = document.createElement('span');
+        span.textContent = icon;
+        span.title = "Click để ẩn";
+        span.onclick = () => { span.style.display = 'none'; };
+        results.appendChild(span);
+      });
+    }
+
+    // Thêm 1 thẻ card cho mỗi người, tối đa 8 thẻ mỗi người
+    function drawCards() {
+      players.forEach((player, i) => {
+        if (player.cards.length < 8) {
+          // Thêm thẻ ngẫu nhiên từ cardIcons
+          const newCard = cardIcons[Math.floor(Math.random() * cardIcons.length)];
+          player.cards.push(newCard);
+          updatePlayerDisplay(player, i);
+        }
+      });
+    }
+  </script>
 </body>
 </html>
