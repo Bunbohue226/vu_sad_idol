@@ -236,10 +236,29 @@
     }
 
     function useCard(playerIdx, cardIdx) {
-      if (!players[playerIdx]) return;
-      players[playerIdx].cards.splice(cardIdx, 1);
-      updatePlayerDisplay(players[playerIdx], playerIdx);
+  if (!players[playerIdx]) return;
+  const card = players[playerIdx].cards[cardIdx];
+
+  if (card === '💉') {
+    if (players[playerIdx].hp < 5) {
+      players[playerIdx].hp = Math.min(5, players[playerIdx].hp + 2); // Tối đa 5 HP
     }
+  }
+  if (card === "🪚") {
+    alert(`${players[playerIdx].name} đã dùng thẻ 🪚 để x2 sát thương đạn!`);
+  }
+    if (card === '🚫') {
+        alert(`${players[playerIdx].name} đã dùng thẻ 🚫 để còng tay 1 người bất kì!`);
+        // Thêm logic chặn đạn nếu cần
+    }
+    if (card === '🕵️') {
+        alert(`${players[playerIdx].name} đã dùng thẻ 🕵️ để xem đạn!`);
+        rollBullet(); // Hiển thị kết quả bom
+    }
+  // Xóa thẻ sau khi dùng
+  players[playerIdx].cards.splice(cardIdx, 1);
+  updatePlayerDisplay(players[playerIdx], playerIdx);
+}
 
     function damagePlayer(index) {
       if (players[index] && players[index].hp > 0) {
